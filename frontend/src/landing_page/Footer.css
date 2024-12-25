@@ -1,0 +1,25 @@
+/* For links in the footer */
+.footer-link {
+    text-decoration: none;
+    color: #81b8e8; /* default muted color */
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #007bff; /* change color on hover */
+    padding-left: 10px; /* adding a slight left padding for hover effect */
+  }
+  
+ 
+
+  /* For social media icons */
+.footer-icon {
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .footer-icon:hover {
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.2); /* Slightly enlarge the icon */
+    opacity: 0.8; /* Add transparency effect on hover */
+  }
+  

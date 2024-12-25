@@ -1,0 +1,42 @@
+.content {
+    flex-basis: 68%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: 3% 2%;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: rgb(71, 71, 71);
+    margin-bottom: 2%;
+  }
+  
+  .order-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .order-table tr {
+    border-top: 1px solid rgb(211, 211, 211);
+    border-bottom: 1px solid rgb(211, 211, 211);
+  }
+  
+  .order-table tr th:first-child,
+  .order-table tr td:first-child {
+    text-align: left;
+  }
+  
+  .order-table tr th:nth-child(1),
+  .order-table tr th:nth-child(4) {
+    border-right: 1px solid #f1f1f1;
+  }
+  
+  .order-table th {
+    text-align: right;
+    padding: 15px 10px;
+    color: rgb(145, 145, 145);
+    font-weight: 300;
+    font-size: 0.8rem;
+  }

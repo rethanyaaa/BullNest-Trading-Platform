@@ -1,0 +1,151 @@
+ .funds {
+  width: 100%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 0;
+  background-color: rgba(20, 88, 214, 0.05); /* Light tint of the primary color */
+  border-bottom: 1px solid rgba(20, 88, 214, 0.3); /* Subtle colored border for separation */
+}
+
+.funds p {
+  font-size: 0.85rem;
+  color: rgba(20, 88, 214, 0.687);
+  margin-right: 10px;
+  font-weight: 500; /* Add more emphasis */
+}
+
+.btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px; /* Rounded buttons for a modern look */
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 0 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(20, 88, 214, 0.2); /* Subtle shadow for depth */
+}
+
+.btn-green {
+  background: rgba(20, 88, 214, 0.687);
+}
+
+.btn-blue {
+  background: #1458d6; /* Replace with stronger primary color */
+}
+
+.btn-blue:hover {
+  background: rgba(20, 88, 214, 0.9); /* Darker shade for hover */
+}
+
+.btn-green:hover {
+  background: #28a745cc; /* Slightly transparent green hover effect */
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 3%;
+  gap: 20px; /* Add spacing between columns */
+}
+
+.col {
+  flex: 1;
+  text-align: left;
+  background-color: #ffffff; /* White card-like background */
+  border: 1px solid rgba(20, 88, 214, 0.2); /* Border color matches theme */
+  border-radius: 12px; /* Smoothly rounded corners */
+  padding: 20px;
+  box-shadow: 0 6px 10px rgba(20, 88, 214, 0.1); /* Elevate with shadows */
+  transition: transform 0.3s ease;
+}
+
+.col:hover {
+  transform: translateY(-5px); /* Add hover lift effect */
+  box-shadow: 0 8px 15px rgba(20, 88, 214, 0.2); /* Intensify shadow on hover */
+}
+
+.col span {
+  display: flex;
+  align-items: center;
+}
+
+.section-icon {
+  transform: scale(1.2); /* Slightly larger for better focus */
+  color: rgba(20, 88, 214, 0.687);
+  margin-right: 10px;
+}
+
+.col span p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.table {
+  padding: 10px 20px;
+}
+
+.table .data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 270px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(20, 88, 214, 0.2); /* Colored divider */
+}
+
+.table .data:last-child {
+  border-bottom: none;
+}
+
+.table .data p:first-child {
+  font-size: 1rem;
+  color: rgba(20, 88, 214, 0.687); /* Use theme color */
+}
+
+.imp {
+  font-size: 1.25rem;
+  font-weight: 600; /* Stronger emphasis */
+  color: rgba(20, 88, 214, 0.9); /* Darker version of theme color */
+}
+
+.colored {
+  color: rgba(20, 88, 214, 0.687); /* Highlighted data */
+}
+
+.table hr {
+  border: none;
+  background: rgba(20, 88, 214, 0.2);
+  height: 1px;
+}
+
+.commodity {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(20, 88, 214, 0.05); /* Subtle background tint */
+  border-radius: 12px;
+  border: 1px solid rgba(20, 88, 214, 0.2);
+  box-shadow: 0 4px 6px rgba(20, 88, 214, 0.1);
+}
+
+.commodity p {
+  margin-bottom: 15px;
+  color: rgba(20, 88, 214, 0.687); /* Match theme */
+  font-weight: 500;
+}
+
+.commodity .btn {
+  margin: 0 auto;
+  display: inline-block;
+  width: auto;
+  background-color: rgba(20, 88, 214, 0.687); /* Button matches theme */
+}
+
+.commodity .btn:hover {
+  background-color: rgba(20, 88, 214, 0.9); /* Darker hover effect */
+}

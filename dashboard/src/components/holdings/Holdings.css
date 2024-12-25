@@ -1,0 +1,122 @@
+.title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgb(20, 88, 214);
+  margin-bottom: 1.5%;
+  text-transform: uppercase;
+}
+
+.order-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-table tr {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.order-table tr:hover {
+  background-color: #eef4fd;
+}
+
+.order-table th {
+  text-align: right;
+  padding: 15px 10px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: rgb(20, 88, 214);
+}
+
+.order-table tr th:first-child,
+.order-table tr td:first-child {
+  text-align: left;
+}
+
+.order-table tr th:nth-child(1),
+.order-table tr th:nth-child(4) {
+  border-right: 1px solid #d3d3d3;
+}
+
+.order-table tr td:nth-child(1),
+.order-table tr td:nth-child(4) {
+  border-right: 1px solid #d3d3d3;
+}
+
+.order-table tr td:last-child {
+  font-size: 0.9rem;
+  color: rgb(27, 19, 19);
+}
+
+.order-table td {
+  padding: 10px 10px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 1rem;
+  color: rgb(73, 73, 73);
+}
+
+.align-left {
+  text-align: left;
+}
+
+.order-table td.profit {
+  color: rgb(72, 194, 55);
+  font-weight: bold;
+}
+
+.order-table td.loss {
+  color: rgb(250, 118, 78);
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4%;
+  gap: 10px;
+}
+
+.col {
+  flex-basis: 33%;
+  padding: 10px;
+  background: #eef4fd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.col h5 {
+  font-size: 2rem;
+  color: rgb(20, 88, 214);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.col h5 span {
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgb(100, 100, 100);
+}
+
+.col p {
+  font-size: 0.9rem;
+  color: rgb(120, 120, 120);
+  font-weight: 400;
+  margin-top: 1%;
+}
+
+.row .col:last-child h5 {
+  color: rgb(72, 194, 55);
+}

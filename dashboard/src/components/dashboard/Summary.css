@@ -1,0 +1,93 @@
+.item:hover {
+  cursor: pointer;
+}
+
+.username h6 {
+  font-size: 1.6rem;
+  font-weight: 500; /* Slightly bold for better readability */
+  color: rgba(15, 8, 8, 0.685); /* Dark blue to match the navbar */
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.divider {
+  border: none;
+  background: rgb(200, 200, 220); /* Softer gray */
+  height: 1px;
+  margin: 15px 0; /* Reduced margin for compact layout */
+  margin-bottom: 3%;
+}
+
+ 
+
+.section span {
+  display: flex;
+  align-items: center;
+  
+}
+
+.section span p {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgb(20, 88, 214, 0.687); /* Dark blue for section titles */
+ 
+}
+
+.section-icon {
+  transform: scale(0.85);
+  color: rgb(83, 103, 173); /* Blend with dark blue */
+  padding: 0;
+  margin: 0;
+  margin-right: 8px;
+}
+
+.data {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.data .first h3 {
+  font-size: 2.2rem; /* Slightly smaller for balance */
+  font-weight: 400; /* Increased weight for better emphasis */
+  color: rgb(2, 28, 88); /* Darker shade of blue */
+}
+
+.data .first p {
+  font-size: 0.85rem;
+  color: rgb(2, 28, 88); /* Softer gray for text */
+}
+
+.data .first small {
+  font-size: 0.8rem;
+  color: rgb(40, 170, 70); /* More subtle green */
+}
+
+.data .first .profit {
+  color: rgb(30, 150, 60); /* Slightly darker green */
+}
+
+.data hr {
+  border-left: 0.8px solid rgb(210, 220, 240); /* Softer divider line */
+  height: 60px; /* Slightly shorter for cleaner look */
+}
+
+.data .second p {
+  font-size: 0.9rem;
+  color: #F1B84B; /* Softer gray */
+  margin-bottom: 8px; /* Reduced gap */
+  white-space: nowrap;
+}
+
+.data .second p span {
+  display: inline;
+  margin-left: 5%;
+  font-size: 0.9rem;
+  color: rgb(2, 28, 88); /* Match dark blue */
+}
+
+.section hr {
+  margin-top: 4%; /* Reduced margin for tighter spacing */
+}

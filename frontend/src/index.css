@@ -1,0 +1,88 @@
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    margin: 0;
+    padding: 0;
+  }
+  
+#support {
+    background-color: #387ed1;
+    color: white;
+}
+
+#supportWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+#supportWrapper a {
+    color: white;
+    font-size: 24px;
+}
+
+#col1 {
+    margin-left: 55px;
+}
+
+#input {
+    width: 92%;
+    padding: 16px ;
+    margin: 20px 0;
+    font-size: 20px;
+    border-radius: 3px;
+    border: none;
+}
+
+#links {
+   padding-bottom: 80px;
+}
+
+#links a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    width: auto; /* Ensures the width is just the size of the content */
+    padding-bottom: 4px; /* Removes padding that might extend the clickable area */
+    margin-right: 20px; /* Space between links */
+}
+
+
+#link-item {
+    display: inline-block;
+
+     
+}
+
+#ticket a {
+    color: white;
+    font-size: 22px;
+}
+
+#support-links {
+    display: block; /* Ensures the container respects block behavior */
+}
+
+ 
+
+.nav-link i {
+    font-size: 21px;
+}
+
+.dropdown-menu {
+  margin-top: 20px;
+}
+
+.custom-dropdown {
+    right: 0; /* Align the dropdown to the right edge of its container */
+    left: auto; /* Prevent it from overlapping on the left */
+    transform: translateX(-110%); /* Shift it fully left to ensure it stays within the viewport */
+    transform: translateY(3.7%);
+    width: 790px;
+    height: 400px;
+    margin-top: 200px;
+  }
+  
+   

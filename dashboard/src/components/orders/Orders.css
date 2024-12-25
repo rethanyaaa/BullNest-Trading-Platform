@@ -1,0 +1,28 @@
+ 
+.orders {
+  width: 100%;
+  height: 90vh;
+}
+
+.no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.no-orders p {
+    margin-top: 6%;
+    color: rgb(20, 14, 20);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 3%;
+}
+
+.btn {
+  text-decoration: none;
+  background: rgb(20, 88, 214); 
+  padding: 10px 20px;
+  border-radius: 2px;
+  color: #fff;
+  margin-top: 10px;
+}

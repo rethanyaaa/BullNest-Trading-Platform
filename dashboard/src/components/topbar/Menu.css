@@ -1,0 +1,141 @@
+.menu-container {
+  flex-basis: 68%;
+  height: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 30px;
+  height: 20px;
+}
+
+.menus {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menus ul {
+  list-style-type: none;
+}
+
+.menus li {
+  display: inline-block;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.menu {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(20, 88, 214, 0.687); /* Vibrant blue */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu:hover {
+  color: rgb(7, 9, 168); /* Bright cyan */
+  transform: scale(1.1); /* Slight zoom for hover effect */
+}
+
+.menu.selected {
+  color: rgba(225, 149, 7, 0.932); /* Slightly darker blue for selected state */
+}
+
+hr {
+  border-left: 0.8px solid rgb(210, 230, 255);
+  height: 30px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile .avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, rgb(0, 75, 160), rgb(44, 130, 201)); /* Gradient for avatar */
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile .username {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(20, 88, 214, 0.687);/* Neutral dark color for username */
+  transition: color 0.3s ease;
+}
+
+.profile:hover .username {
+  color: rgb(0, 128, 212); /* Lighter blue for hover */
+}
+
+.profile:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 68px;
+  right: 10px;
+  width: 200px;
+  background-color: rgb(245, 250, 255); /* Soft white-blue background */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 1000;
+  font-size: 14px;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.dropdown-menu ul li {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: rgb(44, 130, 201); /* Vibrant blue for menu text */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu ul li:hover {
+  background-color: rgb(230, 245, 255); /* Light blue hover background */
+  color: rgb(0, 128, 212); /* Lighter blue text */
+}
+
+.avatar {
+  background: linear-gradient(135deg, rgb(80, 0, 190), rgb(0, 170, 240)); /* Vibrant gradient */
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.username {
+  font-size: 1rem;
+  color: rgb(44, 130, 201); /* Vibrant blue */
+  font-weight: bold;
+}
