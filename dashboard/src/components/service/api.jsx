@@ -8,7 +8,7 @@ import {
   getType,
 } from "../utils/common-utils";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://bullnest-backend.onrender.com";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
