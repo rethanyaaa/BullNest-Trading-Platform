@@ -32,7 +32,7 @@ const Navbar = () => {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link
-                  to="/"
+                  to="https://bullnestdashboard.netlify.app/signup"
                   className="nav-link px-2"
                   aria-current="page"
                 >
