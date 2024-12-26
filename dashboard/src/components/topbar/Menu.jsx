@@ -103,7 +103,7 @@ const Menu = () => {
               <li>Keyboard shortcuts</li>
               <li>Help</li>
               <li>
-                <Link to="/logout" style={{ textDecoration: "none" }}>
+                <Link to="https://bullnest.netlify.app/" style={{ textDecoration: "none" }}>
                   Logout
                 </Link>
               </li>
