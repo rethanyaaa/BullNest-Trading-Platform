@@ -19,7 +19,7 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-  origin: "https://bullnestdashboard.netlify.app/",  // Replace with your frontend domain
+  origin: "https://bullnestdashboard.netlify.app",  // Replace with your frontend domain
   methods: ["POST", "GET", "OPTIONS"],
   allowedHeaders: ["Authorization", "Content-Type"],
 }));
