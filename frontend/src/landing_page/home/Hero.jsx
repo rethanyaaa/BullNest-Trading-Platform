@@ -36,7 +36,7 @@ const Hero = () => {
             bonds, and more.
           </h4>
           <a
-            href="https://bullnestdashboard.netlify.app/signup"
+            href="https://bullnestdashboard.netlify.app"
             className="btn"
             style={{
               backgroundColor: "#ffc107",
