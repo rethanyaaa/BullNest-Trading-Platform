@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 
 const Hero = () => {
   return (
@@ -35,7 +35,8 @@ const Hero = () => {
             Online platform to invest in stocks, derivatives, mutual funds, ETFs,
             bonds, and more.
           </h4>
-          <button
+          <a
+            href="https://bullnestdashboard.netlify.app/signup"
             className="btn"
             style={{
               backgroundColor: "#ffc107",
@@ -48,6 +49,10 @@ const Hero = () => {
               borderRadius: "50px",
               boxShadow: "0 6px 16px rgba(0, 0, 0, 0.4)",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textDecoration: "none",
             }}
             onMouseOver={(e) => {
               e.target.style.transform = "scale(1.1)";
@@ -59,7 +64,7 @@ const Hero = () => {
             }}
           >
             SignUp for Free
-          </button>
+          </a>
         </div>
 
         {/* Image Section */}
