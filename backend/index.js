@@ -8,27 +8,22 @@ const jwt = require("jsonwebtoken");
 
 const User = require("./model/user.js");
 const Token = require("./model/token.js");
-
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
 const OrdersModel = require("./model/OrdersModel");
 
 const PORT = process.env.PORT || 8080;
-
 const app = express();
 
-// CORS configuration
-app.use(cors({
-  origin: "https://bullnestdashboard.netlify.app",  // Replace with your frontend domain
-  methods: ["POST", "GET", "OPTIONS"],
-  allowedHeaders: ["Authorization", "Content-Type"],
-}));
-
-// Use built-in middleware to parse JSON and URL-encoded data
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+  origin:  "https://bullnestdashboard.netlify.app",
+  credentials: true
+}));
 
-// Connect to MongoDB
+// MongoDB Connection
 const MONGO_URL = process.env.MONGO_DB;
 async function main() {
   try {
@@ -36,96 +31,201 @@ async function main() {
     console.log("Connected to DB");
   } catch (error) {
     console.error("Error connecting to DB:", error);
+    process.exit(1);
   }
 }
-
 main();
 
-// app.get("/addHoldings", (req, res) => { ... });
-
-// app.get("/addPositions", (req, res) => { ... });
-
+// Data routes (unchanged)
 app.get("/allHoldings", async (req, res) => {
-  let allHoldings = await HoldingsModel.find({});
-  res.json(allHoldings);
+  try {
+    const allHoldings = await HoldingsModel.find({});
+    res.json(allHoldings);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch holdings" });
+  }
 });
 
 app.get("/allPositions", async (req, res) => {
-  let allPositions = await PositionsModel.find({});
-  res.json(allPositions);
+  try {
+    const allPositions = await PositionsModel.find({});
+    res.json(allPositions);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch positions" });
+  }
 });
 
 app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
-  });
-  newOrder.save();
-  res.send("Order saved!");
-});
-
-app.post("/signup", async(request,response) => {
   try {
-    //const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(request.body.password, 10);
-
-    const user = {
-      username: request.body.username,
-      name: request.body.name,
-      password: hashedPassword,
-    };
-
-    const newUser = new User(user);
-    await newUser.save();
-    return response.status(200).send({ msg: `signup successfull` });
-  } catch (e) {
-    return response
-      .status(500)
-      .send({ msg: `error while signing up the user` });
+    const newOrder = new OrdersModel({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
+    await newOrder.save();
+    res.status(201).json({ message: "Order saved successfully", order: newOrder });
+  } catch (error) {
+    res.status(400).json({ error: "Failed to save order" });
   }
 });
 
-app.post("/login", async(request,response) => {
-  let user = await User.findOne({ username: request.body.username });
-  if (!user) {
-    return response.status(400).json({ msg: "Username does not match" });
-  }
-
+// Authentication routes
+app.post("/signup", async (req, res) => {
   try {
-    let match = await bcrypt.compare(request.body.password, user.password);
-    if (match) {
-      const accessToken = jwt.sign(
-        user.toJSON(),
-        process.env.ACCESS_SECRET_KEY,
-        { expiresIn: "15m" }
-      );
-      const refreshToken = jwt.sign(
-        user.toJSON(),
-        process.env.REFRESH_SECRET_KEY
-      );
-
-      const newToken = new Token({ token: refreshToken });
-      await newToken.save();
-
-      return response
-        .status(200)
-        .json({
-          accessToken: accessToken,
-          refreshToken: refreshToken,
-          name: user.name,
-          username: user.username,
-        });
-
-    } else {
-      return response.status(400).json({ msg: "Password does not match" });
+    // Validate input
+    if (!req.body.username || !req.body.password || !req.body.name) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Username, password, and name are required" 
+      });
     }
-  } catch (e) {
-    return response.status(500).json({ msg: "Error while logging in user" });
+
+    // Check if user exists
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser) {
+      return res.status(409).json({ 
+        success: false,
+        message: "Username already exists" 
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    // Create user
+    const user = new User({
+      username: req.body.username,
+      name: req.body.name,
+      password: hashedPassword,
+    });
+
+    await user.save();
+    
+    return res.status(201).json({ 
+      success: true,
+      message: "Signup successful",
+      user: {
+        username: user.username,
+        name: user.name
+      }
+    });
+  } catch (error) {
+    console.error("Signup error:", error);
+    return res.status(500).json({ 
+      success: false,
+      message: "Internal server error during signup" 
+    });
   }
 });
 
+app.post("/login", async (req, res) => {
+  try {
+    // Validate input
+    if (!req.body.username || !req.body.password) {
+      return res.status(400).json({ 
+        success: false,
+        message: "Username and password are required" 
+      });
+    }
+
+    // Find user
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) {
+      return res.status(401).json({ 
+        success: false,
+        message: "Invalid credentials" 
+      });
+    }
+
+    // Compare passwords
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ 
+        success: false,
+        message: "Invalid credentials" 
+      });
+    }
+
+    // Create tokens
+    const accessToken = jwt.sign(
+      { userId: user._id, username: user.username },
+      process.env.ACCESS_SECRET_KEY,
+      { expiresIn: "15m" }
+    );
+
+    const refreshToken = jwt.sign(
+      { userId: user._id },
+      process.env.REFRESH_SECRET_KEY,
+      { expiresIn: "7d" }
+    );
+
+    // Save refresh token
+    await new Token({ token: refreshToken }).save();
+
+    // Set cookies (optional)
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+      accessToken,
+      user: {
+        username: user.username,
+        name: user.name
+      }
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ 
+      success: false,
+      message: "Internal server error during login" 
+    });
+  }
+});
+
+// Token verification endpoint
+app.post("/verifyToken", async (req, res) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ isValid: false, message: "No token provided" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
+    const user = await User.findById(decoded.userId);
+    
+    if (!user) {
+      return res.status(404).json({ isValid: false, message: "User not found" });
+    }
+
+    return res.json({ 
+      isValid: true,
+      user: {
+        username: user.username,
+        name: user.name
+      }
+    });
+  } catch (error) {
+    console.error("Token verification error:", error);
+    return res.status(403).json({ isValid: false, message: "Invalid or expired token" });
+  }
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ success: false, message: "Something broke!" });
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
