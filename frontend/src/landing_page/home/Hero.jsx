@@ -1,4 +1,5 @@
- import React from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -35,8 +36,8 @@ const Hero = () => {
             Online platform to invest in stocks, derivatives, mutual funds, ETFs,
             bonds, and more.
           </h4>
-          <a
-            href="https://bullnestdashboard.netlify.app"
+          <Link
+            to="https://bullnestdashboard.netlify.app"  {/* Changed from href to 'to' */}
             className="btn"
             style={{
               backgroundColor: "#ffc107",
@@ -64,7 +65,7 @@ const Hero = () => {
             }}
           >
             SignUp for Free
-          </a>
+          </Link>
         </div>
 
         {/* Image Section */}
